@@ -14,7 +14,7 @@
 
   <%Owner.all.each do |owner|%>
     <!-- doesn't populate owner.name for checkboxes -->
-    <input type="checkbox" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>"><%='checked' if @pets.owner_id == owner.id %>><%=owner.name%></input>
+    <input type="checkbox" name="pet[owner_id]" id="<%= owner.name %>" value="<%= owner.id %>"><%='checked' if @pets.owner_id == owner.id %>><%=owner.name%></input>
   <%end%>
   <br>
   <label>and/or, create a new owner:</label>
