@@ -1,3 +1,15 @@
+#edit.erb
+
+
+
 <h1>Update Pet</h1>
 
-
+ <form action="/pets/<%=@pet.id%>" method="POST">
+	<input id="hidden" type="hidden" name="_method" value="patch">
+	<input type="text" value="<%=@pet.name%>" name="pet_name">
+	<%@owners.each do |owner|%>
+    	<input type="radio" name="owner[name]" id="<%= owner.id%>" value="<%=owner.name%>" <%='checked' if @pet.owner == owner %>><%=owner.name%>
+  	<%end%>
+	<input type="text" id= "owner_name" name="owner_name">
+    <input type="submit" value="Update Pet">
+</form>
