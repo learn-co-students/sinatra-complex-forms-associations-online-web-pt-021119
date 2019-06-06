@@ -14,12 +14,12 @@
   <br />
 
   <%@owners.each do |owner|%>
-    <input type="checkbox" name="pet[owner_ids][]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+    <input type="radio" name="pet[owner_id][]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
 
   <br />
 
-    <label>or, create a new owner:</label>
+    <label>and/or, create a new owner:</label>
     <br />
     <label>name:</label>
       <input type="text" name="owner[name]" id="owner_name"/><br />
