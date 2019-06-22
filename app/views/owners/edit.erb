@@ -1,2 +1,27 @@
 <h1>Update Owner</h1>
 
+<form action="/owners/<%=@owner.id%>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+    <label>Name:</label>
+
+    <br><br>
+
+    <input type="text" name="owner[name]" id="owner_name" value="<%=@owner.name%>">
+    <!-- name is the key to the owner hash inside the params hash, and value is the value at the name key
+         params[:owner][:name] = @owner.name
+         Capybara uses the id owner_name in tests -->
+
+    <br><br>
+
+    <label>Choose an existing pet:</label>
+    <% @pets.each do |pet| %>
+        <input type="checkbox" name="owner[pet_ids][]" id="<%=pet.id%>" value="<%=pet.id%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
+    <% end %>
+
+    <br><br>
+
+    <label>and/or, create a new pet:</label>
+        <input type="text" name="pet[name]" id="pet_name">
+    <br>
+    <input type="submit" value="Update Owner">
+</form>
